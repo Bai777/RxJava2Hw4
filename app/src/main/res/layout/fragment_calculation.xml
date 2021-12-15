@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/et_data"
+        android:id="@+id/et_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/textFromEt"
@@ -26,5 +26,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/sizeTextFromCalFragm"
-        tools:text="Результат" />
+        android:text="@string/textFromTvCalc"  />
 </LinearLayout>

@@ -2,4 +2,5 @@
     <string name="app_name">RxJava2Hw4</string>
     <string name="textFromEt">Введите число</string>
     <string name="textFromBtnCalcFragm">Расчитать</string>
+    <string name="textFromTvCalc">Результат:</string>
 </resources>
