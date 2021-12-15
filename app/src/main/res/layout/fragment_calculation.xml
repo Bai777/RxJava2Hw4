@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/textFromEt"
+        android:textSize="@dimen/sizeTextFromCalFragm" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonProceed"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopFromCalcFragm"
+        android:text="@string/textFromBtnCalcFragm" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sizeTextFromCalFragm"
+        tools:text="Результат" />
+</LinearLayout>
