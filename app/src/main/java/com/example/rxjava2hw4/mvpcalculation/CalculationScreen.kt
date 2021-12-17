@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
-object CalculationScreen: FragmentScreen {
-    override fun createFragment(factory: FragmentFactory): Fragment = CalculationFragment.newInstance()
+class CalculationScreen(private val number: String) : FragmentScreen {
+    override fun createFragment(factory: FragmentFactory): Fragment =
+        CalculationFragment.newInstance(number)
 }

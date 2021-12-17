@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rxjava2hw4.R
 import com.example.rxjava2hw4.databinding.ActivityMainBinding
+import com.example.rxjava2hw4.mvpcalculation.CalculationFragment
 import com.example.rxjava2hw4.mvpcalculation.CalculationScreen
 import com.github.terrakok.cicerone.androidx.AppNavigator
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity(), IMainView {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        App.instance.router.navigateTo(CalculationScreen)
+        App.instance.router.navigateTo(CalculationFragment)
     }
 
     override fun onResumeFragments() {

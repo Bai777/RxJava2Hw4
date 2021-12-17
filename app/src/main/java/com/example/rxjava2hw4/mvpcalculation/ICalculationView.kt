@@ -5,5 +5,5 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 
 @AddToEndSingle
 interface ICalculationView: MvpView {
-    fun showResult(result: String)
+    fun showResult()
 }
