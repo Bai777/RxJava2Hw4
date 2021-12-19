@@ -1,10 +1,12 @@
 package com.example.rxjava2hw4.mvpcalculation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.rxjava2hw4.databinding.FragmentCalculationBinding
 import com.example.rxjava2hw4.view.App
 import com.example.rxjava2hw4.view.IBackButtonListener
@@ -43,7 +45,8 @@ class CalculationFragment : MvpAppCompatFragment(), ICalculationView, IBackButto
 
     override fun backPressed() = presenterCalculation.backPressed()
 
-    override fun showResult(result: Unit) {
-        binding?.tvResult?.text = result as Editable
+    @SuppressLint("SetTextI18n")
+    override fun showResult(result: String) {
+        binding?.tvResult?.text = "Результат: $result"
     }
 }

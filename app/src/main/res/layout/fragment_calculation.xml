@@ -21,10 +21,9 @@
         android:layout_marginTop="@dimen/marginTopFromCalcFragm"
         android:text="@string/textFromBtnCalcFragm" />
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/sizeTextFromCalFragm"
-        android:text="@string/textFromTvCalc"  />
+        android:textSize="@dimen/sizeTextFromCalFragm"/>
 </LinearLayout>

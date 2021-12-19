@@ -11,27 +11,32 @@ import moxy.MvpPresenter
 class CalculationPresenter(
     private val router: Router,
 ) : MvpPresenter<ICalculationView>() {
-    private val subject = PublishSubject.create<Unit>()
+    private val subject = PublishSubject.create<String>()
     private val context = App.instance.getContext()
 
     override fun onFirstViewAttach() {
         observeChanges()
-        updateContent()
     }
 
-    private fun updateContent(){
-        subject.onNext(Unit)
+    private fun updateContent(value: String) {
+        subject.onNext(value)
     }
 
     private fun observeChanges() {
         subject
-            .subscribeOn(Schedulers.io())
+            .map { getSquare(it) }
             .observeOn(Schedulers.computation())
-            .map { it }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({viewState.showResult(it)}, {})
+            .subscribe({viewState.showResult(it)}, {
+                Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
+            })
     }
 
+    private fun getSquare(value: String): String{
+        val userNumber = value.toInt()
+        val result = userNumber * userNumber
+        return result.toString()
+    }
 
     fun backPressed(): Boolean {
         router.exit()
@@ -42,7 +47,7 @@ class CalculationPresenter(
         if (number.isNullOrEmpty()) {
             Toast.makeText(context, "Введите значение!!!", Toast.LENGTH_SHORT).show()
         } else {
-            updateContent()
+            updateContent(number)
         }
     }
 }
