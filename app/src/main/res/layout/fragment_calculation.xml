@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/et_data"
+        android:id="@+id/et_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/textFromEt"
@@ -21,10 +21,9 @@
         android:layout_marginTop="@dimen/marginTopFromCalcFragm"
         android:text="@string/textFromBtnCalcFragm" />
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/sizeTextFromCalFragm"
-        tools:text="Результат" />
+        android:textSize="@dimen/sizeTextFromCalFragm"/>
 </LinearLayout>
