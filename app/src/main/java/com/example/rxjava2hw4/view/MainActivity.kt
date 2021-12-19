@@ -1,7 +1,7 @@
 package com.example.rxjava2hw4.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.rxjava2hw4.R
 import com.example.rxjava2hw4.databinding.ActivityMainBinding
 import com.example.rxjava2hw4.mvpcalculation.CalculationFragment
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(), IMainView {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        App.instance.router.navigateTo(CalculationFragment)
+        App.instance.router.navigateTo(CalculationScreen())
     }
 
     override fun onResumeFragments() {

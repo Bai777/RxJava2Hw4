@@ -8,25 +8,15 @@ import android.view.ViewGroup
 import com.example.rxjava2hw4.databinding.FragmentCalculationBinding
 import com.example.rxjava2hw4.view.App
 import com.example.rxjava2hw4.view.IBackButtonListener
-import com.example.rxjava2hw4.view.IMainView
 import com.github.terrakok.cicerone.Screen
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
-class CalculationFragment : MvpAppCompatFragment(), IMainView, ICalculationView, IBackButtonListener {
+class CalculationFragment : MvpAppCompatFragment(), ICalculationView, IBackButtonListener {
     companion object : Screen {
-        private const val ARG_RESULT = "arg_result"
-        fun newInstance(number: String) = CalculationFragment().apply {
-            arguments = Bundle().apply {
-                putString(ARG_RESULT, number)
-            }
-        }
-    }
-    private val numberUser: String by lazy {
-        arguments?.getString(ARG_RESULT).orEmpty()
+        fun newInstance() = CalculationFragment()
     }
     private val presenterCalculation: CalculationPresenter by moxyPresenter { CalculationPresenter(
-        numberUser,
         router = App.instance.router
     ) }
 
@@ -53,7 +43,7 @@ class CalculationFragment : MvpAppCompatFragment(), IMainView, ICalculationView,
 
     override fun backPressed() = presenterCalculation.backPressed()
 
-    override fun showResult(){
-        binding?.tvResult?.text = numberUser as Editable
+    override fun showResult(result: Unit) {
+        binding?.tvResult?.text = result as Editable
     }
 }

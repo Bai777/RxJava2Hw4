@@ -9,15 +9,29 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 import moxy.MvpPresenter
 
 class CalculationPresenter(
-    private val number: String,
     private val router: Router,
 ) : MvpPresenter<ICalculationView>() {
     private val subject = PublishSubject.create<Unit>()
     private val context = App.instance.getContext()
 
     override fun onFirstViewAttach() {
-
+        observeChanges()
+        updateContent()
     }
+
+    private fun updateContent(){
+        subject.onNext(Unit)
+    }
+
+    private fun observeChanges() {
+        subject
+            .subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.computation())
+            .map { it }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({viewState.showResult(it)}, {})
+    }
+
 
     fun backPressed(): Boolean {
         router.exit()
@@ -25,18 +39,10 @@ class CalculationPresenter(
     }
 
     fun validateData(number: String) {
-        val result: Int = number.toInt()
         if (number.isNullOrEmpty()) {
             Toast.makeText(context, "Введите значение!!!", Toast.LENGTH_SHORT).show()
         } else {
-            subject
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
-                .map {
-                    result * result
-                }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({}, {})
+            updateContent()
         }
     }
 }
